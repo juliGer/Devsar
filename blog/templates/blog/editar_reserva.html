@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block head %}
+    <head>
+        <title>Detail</title>
+    </head>
+{% endblock %}
+{% block body %}
+<body>  
+	<div class="col-md-12 text-center"> 
+    <h2>Nueva Cancha</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+    	
+			{{ form.as_p }}
+        <button class="btn btn-primary" type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+</body>
+{% endblock %}
+</html>

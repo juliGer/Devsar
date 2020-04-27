@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+
+{% block head %}
+    <head>
+        <title>Inicio</title>
+    </head>
+{% endblock %}
+
+{% block body %}
+<body> 
+<div class="col-md-3">
+    
+</div>
+<div class="col-md-6">
+    <div class="text-center">
+    <u><h3>Canchas disponibles</h3></u>
+    </div>
+            <table class="table">
+              <tr>
+                <th>Nombre</th>     
+                <th>Tipo</th>
+                <th>Vestuario disponible?</th>
+                <th>Iluminación</th>
+                <th>Cesped sintetico</th>
+              </tr>
+        {% for cancha in canchas %}
+              <tr>
+                <td><a href="{% url 'detalle_cancha' pk=cancha.pk %}">{{ cancha.nombre }}</a></td>
+                <td>{{cancha.tipo}}</td>
+                <td>{{cancha.vestuario}}</td>
+                <td>{{cancha.iluminacion}}</td>
+                <td>{{cancha.cesped}}</td>
+              </tr>
+        {% endfor %}
+            </table>
+</div>
+<div class="col-md-3">
+    
+</div>
+</body>
+{% endblock %}

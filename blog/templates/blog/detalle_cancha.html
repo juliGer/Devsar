@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+
+{% block head %}
+    <head>
+        <title>Detail</title>
+    </head>
+{% endblock %}
+{% block body %}
+<body>   
+    <br>
+    <br>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="text-center">
+                <u><h3>Cancha {{cancha.nombre}}</h3></u>
+            </div>
+            <table class="table">
+              <tr>   
+                <th>Tipo</th>
+                <th>Código</th>
+                <th>Vestuario</th>
+                <th>Iluminación</th>
+                <th>Cesped</th>
+              </tr>
+              <tr>
+                <td>{{cancha.tipo}}</td>
+                <td>{{cancha.codigo}}</td>
+                <td>{{cancha.vestuario}}</td>
+                <td>{{cancha.iluminacion}}</td>
+                <td>{{cancha.cesped}}</td>
+              </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="text-center">
+           <u><h3>Alquileres para la cancha {{cancha.nombre}}</h3></u>
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+              <tr>   
+                <th>Fecha y Hora</th>
+                <th>Cliente</th>
+                <th>Borrar</th>
+                <th>Editar</th>
+              </tr>
+            {% for a in alquiler %}
+              <tr>
+                <td>{{a.fechaHora}}</td>
+                <td>{{a.cliente}}</td>
+                <th><button class="btn btn-danger" onclick="location.href='{% url 'borrar' pk=a.pk  %}'">Borrar</button></th>
+                <th><button class="btn btn-primary" onclick="location.href='{% url 'editar_reserva' pk=a.pk  %}'">Editar</button></th>
+              </tr>
+            {%endfor%}
+            </table>
+            <button class="btn btn-primary" onclick="location.href='{% url 'crear_reserva' pk=cancha.pk %}'">Agregar Reserva</button>
+        
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>
